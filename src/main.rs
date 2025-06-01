@@ -103,7 +103,6 @@ async fn main() {  // This is the function that is normally set to immediately e
 		//println!("{:#?}", &planetary_bodies);
 		if is_mouse_button_pressed(MouseButton::Left) {
 			let (mouse_x,mouse_y) = mouse_position();
-			macroquad::prelude::draw_circle(mouse_x,mouse_y,1., RED);
 			planetary_bodies.push(PlanetaryBody {mass: 2.0, radius: (macroquad::prelude::screen_height() as f64) / 100.0, velocity: [10.0, -40.0], location: [mouse_x as f64 - view_attributes[0],mouse_y as f64 - view_attributes[1]], colour: macroquad::prelude::RED});
 
 		}
