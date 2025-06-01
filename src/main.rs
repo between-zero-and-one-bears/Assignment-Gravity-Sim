@@ -101,11 +101,11 @@ async fn main() {  // This is the function that is normally set to immediately e
 		//fonts.draw_text("hello", view_attributes[0] as f32, view_attributes[1] as f32, 20.0, macroquad::prelude::BLACK);
 		//fonts.draw_text("hello", 0.0, 0.0, 20.0, macroquad::prelude::BLACK);
 		//println!("{:#?}", &planetary_bodies);
-		if is_mouse_button_pressed(MouseButton::Left) {
+		/*if is_mouse_button_pressed(MouseButton::Left) {
 			let (mouse_x,mouse_y) = mouse_position();
 			planetary_bodies.push(PlanetaryBody {mass: 2.0, radius: (macroquad::prelude::screen_height() as f64) / 100.0, velocity: [10.0, -40.0], location: [mouse_x as f64 - view_attributes[0],mouse_y as f64 - view_attributes[1]], colour: macroquad::prelude::RED});
 
-		}
+		}*/
 		planetary_bodies = physics_tick(planetary_bodies, delta_time as f64); //changed to just pass the bodies back and forth to get around mutable reference issues
 		next_frame().await
 	}
