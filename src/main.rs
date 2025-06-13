@@ -34,12 +34,12 @@ struct PlanetaryBody {
 // The impl block defines properties of the type specified. Here, the type specified is PlanetaryBody. 
 impl PlanetaryBody {  
 	fn self_adjust_velocity_for_gravity_to_other_object(mut self, body_2_r: &PlanetaryBody, delta_time: f64) -> PlanetaryBody {
-		let x_displacement: f64 = body_2_r.location[0] - self.location[0];
-		let y_displacement: f64 = body_2_r.location[1] - self.location[1];
-		let distance: f64 = f64::sqrt((x_displacement * x_displacement) + (y_displacement * y_displacement));
+		let x_offset: f64 = body_2_r.location[0] - self.location[0];
+		let y_offset: f64 = body_2_r.location[1] - self.location[1];
+		let distance: f64 = f64::sqrt((x_offset * x_offset) + (y_offset * y_offset));
 		let acceleration: f64 = UNIVERSAL_GRAVITATIONAL_CONSTANT * body_2_r.mass / (distance * distance);
-		self.velocity[0] += delta_time * acceleration * x_displacement / distance;
-		self.velocity[1] += delta_time * acceleration * y_displacement / distance;
+		self.velocity[0] += delta_time * acceleration * x_offset / distance;
+		self.velocity[1] += delta_time * acceleration * y_offset / distance;
 		return self
 	}
 	fn self_adjust_location_for_velocity(mut self, delta_time: f64) -> PlanetaryBody {
@@ -92,7 +92,10 @@ async fn main() {  // This is the function that is normally set to immediately e
 	loop {
 		clear_background(macroquad::prelude::WHITE);
 		render_bodies(&planetary_bodies, view_attributes);
-		let delta_time = get_frame_time();
+		//let delta_time = get_frame_time();
+		let delta_time = 1.0;
+
+		
 		/*{
 			let font = FONT_SPECTRAL_LIGHT.clone();
 			macroquad::text::draw_text("hello", view_attributes[0] as f32, view_attributes[1] as f32, 20.0, macroquad::prelude::BLACK);
