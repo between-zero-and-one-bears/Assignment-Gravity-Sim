@@ -93,7 +93,7 @@ async fn main() {  // This is the function that is normally set to immediately e
 		clear_background(macroquad::prelude::WHITE);
 		render_bodies(&planetary_bodies, view_attributes);
 		//let delta_time = get_frame_time();
-		let delta_time = 0.05;
+		let delta_time = 0.0;
 
 		
 		/*{
